@@ -58,6 +58,21 @@
   }
 }
 
+@font-face {
+  font-family: 'Baloo';
+  src: url('/public/assets/fonts/BalooThambi2-VariableFont_wght.ttf');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Rubik';
+  src: url('/public/assets/fonts/Rubik-VariableFont_wght.ttf');
+  font-weight: 400;
+  font-style: normal;
+}
+
+
 @layer base {
   * {
     @apply border-border;
