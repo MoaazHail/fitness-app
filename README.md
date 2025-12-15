@@ -1,73 +1,210 @@
-# React + TypeScript + Vite
+# Fitness App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern React.js application with a comprehensive design system and reusable UI components.
 
-Currently, two official plugins are available:
+## 🎨 Design System
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+This project includes a carefully crafted design system with the following color palette:
 
-## React Compiler
+### Color Palette
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- **Orange Primary**: `#FF4100`
+- **White**: `#FFFFFF`
+- **Dark**: `#24242499`
+- **Zinc**: `#fafafa` to `#090906` (11 shades)
 
-## Expanding the ESLint configuration
+Each color includes 11 shades (50, 100, 200, 300, 400, 500, 600, 700, 800, 900, 950) for consistent design implementation.
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## 🚀 Getting Started
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+### Prerequisites
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+- React.js 19+
+- pnpm (recommended) or npm
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+### Installation
+
+1. Clone the repository
+2. Install dependencies:
+
+   ```bash
+   pnpm install
+   ```
+
+3. Run the development server:
+
+   ```bash
+   pnpm dev
+   ```
+
+4. Open [http://localhost:3000](http://localhost:3000) in your browser
+
+## 🛠️ Tech Stack
+
+- **Framework**: React.js 19
+- **Language**: TypeScript
+- **Styling**: Tailwind CSS
+- **UI Components**: Custom components with Radix UI primitives
+- **Icons**: Lucide React
+- **Code Quality**: Prettier, ESLint
+- **Package Manager**: pnpm
+
+## 📁 Project Structure
+
+```
+src/
+├── app/                    # React.js app directory
+├── components/
+│   ├── features/          # Feature-specific components
+│   ├── layout/            # Layout components
+│   │   ├── Header.tsx
+│   │   ├── Footer.tsx
+│   │   ├── MainLayout.tsx
+│   │   └── Section.tsx
+│   ├── providers/         # Context providers
+│   │   └── ThemeProvider.tsx
+│   └── shared/            # Reusable UI components
+│       ├── Button.tsx
+│       ├── Input.tsx
+│       ├── Textarea.tsx
+│       ├── Card.tsx
+│       ├── Badge.tsx
+│       ├── Label.tsx
+│       └── index.ts
+├── hooks/                 # Custom React hooks
+├── i18n/                  # Internationalization
+├── lib/                   # Utilities and configurations
+│   ├── apis/             # API utilities
+│   ├── constants/        # App constants
+│   ├── schemes/          # Validation schemas
+│   ├── types/            # TypeScript type definitions
+│   └── utils/            # Utility functions
+└── styles/               # Global styles
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## 🎯 UI Components
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+### Available Components
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+- **Button**: Multiple variants including design system colors
+- **Input**: Form input with error states and helper text
+- **Textarea**: Multi-line text input with validation
+- **Card**: Container component with header, content, and footer
+- **Badge**: Status and label indicators
+- **Label**: Form labels with required field indicators
+
+### Usage Example
+
+```tsx
+import { Button, Input, Card, CardContent } from '@/components/shared';
+
+export function ExampleComponent() {
+  return (
+    <Card>
+      <CardContent>
+        <Input placeholder='Enter your name' />
+        <Button variant='maroon' size='lg'>
+          Submit
+        </Button>
+      </CardContent>
+    </Card>
+  );
+}
 ```
+
+## 🎨 Styling
+
+### Tailwind Configuration
+
+The project uses a custom Tailwind configuration with:
+
+- Design system colors integrated
+- Custom CSS variables for theming
+- Responsive design utilities
+- Dark mode support
+
+### CSS Variables
+
+The project uses CSS variables for consistent theming:
+
+```css
+:root {
+  --background: 0 0% 100%;
+  --foreground: 20 14.3% 4.1%;
+  --primary: 24 9.8% 10%;
+  /* ... more variables */
+}
+```
+
+## 🔧 Development
+
+### Code Formatting
+
+The project uses Prettier for code formatting:
+
+```bash
+# Format all files
+pnpm format
+
+# Check formatting
+pnpm format:check
+```
+
+### Linting
+
+ESLint is configured for code quality:
+
+```bash
+pnpm lint
+```
+
+### Available Scripts
+
+- `pnpm dev` - Start development server
+- `pnpm build` - Build for production
+- `pnpm start` - Start production server
+- `pnpm lint` - Run ESLint
+- `pnpm format` - Format code with Prettier
+- `pnpm format:check` - Check code formatting
+
+## 📱 Responsive Design
+
+All components are built with mobile-first responsive design principles using Tailwind CSS breakpoints:
+
+- `sm`: 640px
+- `md`: 768px
+- `lg`: 1024px
+- `xl`: 1280px
+- `2xl`: 1536px
+
+## 🚀 Deployment
+
+The application is ready for deployment on Vercel, Netlify, or any other platform that supports Next.js.
+
+### Build for Production
+
+```bash
+pnpm build
+```
+
+### Start Production Server
+
+```bash
+pnpm start
+```
+
+## 🤝 Contributing
+
+1. Fork the repository
+2. Create a feature branch
+3. Make your changes
+4. Run tests and linting
+5. Submit a pull request
+
+## 📄 License
+
+This project is licensed under the MIT License.
+
+## 🆘 Support
+
+For support and questions, please open an issue in the repository.
