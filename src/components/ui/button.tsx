@@ -1,9 +1,9 @@
-import * as React from "react";
 import { Slot } from "@radix-ui/react-slot";
 import { cva, type VariantProps } from "class-variance-authority";
+import * as React from "react";
 
 import { cn } from "@/lib/utils/tailwind-merge";
-import { ArrowUpRight } from "lucide-react";
+import { ArrowUpRight, Loader } from "lucide-react";
 
 const buttonVariants = cva(
   "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-full text-sm text-white font-medium transition-colors  disabled:cursor-not-allowed disabled:bg-gray [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0",
@@ -32,18 +32,36 @@ export interface ButtonProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement>,
     VariantProps<typeof buttonVariants> {
   asChild?: boolean;
+  isPending?: boolean;
 }
 
 // Default Button
 const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
-  ({ className, variant, size, asChild = false, ...props }, ref) => {
+  (
+    {
+      className,
+      variant,
+      size,
+      asChild = false,
+      isPending = false,
+      children,
+      ...props
+    },
+    ref
+  ) => {
     const Comp = asChild ? Slot : "button";
     return (
       <Comp
         className={cn(buttonVariants({ variant, size, className }))}
         ref={ref}
         {...props}
-      />
+      >
+        {/* Loading State */}
+        {isPending && <Loader className="animate-spin" />}
+
+        {/* Label */}
+        {children}
+      </Comp>
     );
   }
 );
@@ -64,7 +82,7 @@ const ButtonIcon = React.forwardRef<HTMLButtonElement, ButtonProps>(
         {...props}
       >
         {children}
-        <div className=" absolute -right-3 flex justify-center items-center border-2 border-white p-1 bg-orange-primary rounded-full text-white ">
+        <div className="absolute flex items-center justify-center p-1 text-white border-2 border-white rounded-full -right-3 bg-orange-primary">
           <ArrowUpRight />
         </div>
       </Comp>
@@ -73,4 +91,5 @@ const ButtonIcon = React.forwardRef<HTMLButtonElement, ButtonProps>(
 );
 ButtonIcon.displayName = "ButtonIcon";
 
+// eslint-disable-next-line react-refresh/only-export-components
 export { Button, ButtonIcon, buttonVariants };

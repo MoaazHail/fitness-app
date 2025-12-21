@@ -4,10 +4,9 @@ export default function ToasterProvider() {
   return (
     <Toaster
       duration={1000}
-      position="top-left"
+      position="top-right"
       richColors
       expand
-      closeButton
       theme="system"
     />
   );

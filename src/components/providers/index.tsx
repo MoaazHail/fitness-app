@@ -1,3 +1,4 @@
+import AuthenticationProvider from "@/components/providers/authentication-provider/authentication-provider";
 import ReactQueryProvider from "./query-client-provider/query-client-provider";
 import ToasterProvider from "./toaster-provider/toaster-provider";
 
@@ -12,7 +13,9 @@ export default function AppProvider({ children }: ProviderPropsType) {
       <ToasterProvider />
 
       {/* Content */}
-      <ReactQueryProvider>{children}</ReactQueryProvider>
+      <ReactQueryProvider>
+        <AuthenticationProvider>{children}</AuthenticationProvider>
+      </ReactQueryProvider>
     </>
   );
 }

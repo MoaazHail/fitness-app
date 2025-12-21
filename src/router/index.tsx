@@ -1,27 +1,31 @@
-import { lazy, Suspense, useEffect } from "react";
-import { Route, Routes, useLocation } from "react-router-dom";
+import GuestRoute from "./guest-route";
 
-const SignInPage = lazy(() => import("@/app/(auth)/sign-in/page"));
-const HomePage = lazy(() => import("@/app/(home)/page"));
+import { lazy, Suspense } from "react";
+import { Route, Routes } from "react-router-dom";
 
 // Layouts
 import AuthLayout from "@/app/(auth)/auth-layout";
 import MainLayout from "@/app/main-layout";
 
+// Pages (Lazy Loaded)
+const LoginPage = lazy(() => import("@/app/(auth)/login/page"));
+
+const HomePage = lazy(() => import("@/app/(home)/page"));
+
 export default function AppRouter() {
-  const location = useLocation();
-
-  // Scroll to top on route change
-  useEffect(() => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  }, [location.pathname]);
-
   return (
     <Suspense fallback={<h2 className="text-4xl font-bold">Loading...</h2>}>
       <Routes>
-        {/* Auth routes */}
-        <Route element={<AuthLayout />}>
-          <Route path="/sign-in" element={<SignInPage />} />
+        <Route
+          element={
+            <GuestRoute>
+              <AuthLayout />
+            </GuestRoute>
+          }
+        >
+          <Route path="/login" element={<LoginPage />} />
+          <Route path="/register" element={<h2>register</h2>} />
+          <Route path="/forget-password" element={<h2>forgetPage</h2>} />
         </Route>
 
         {/* Main Layout */}
