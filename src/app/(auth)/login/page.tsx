@@ -10,7 +10,11 @@ export default function SingInPage() {
         <AuthenticationHeading.title>Hey There,</AuthenticationHeading.title>
 
         {/* Description */}
-        <AuthenticationHeading.description>
+        <AuthenticationHeading.description
+          style={{
+            letterSpacing: "4px",
+          }}
+        >
           WELCOME BACK!
         </AuthenticationHeading.description>
       </AuthenticationHeading>
