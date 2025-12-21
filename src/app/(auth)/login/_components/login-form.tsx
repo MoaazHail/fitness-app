@@ -55,7 +55,7 @@ export default function LoginForm() {
   return (
     <Form {...form}>
       <form
-        className="p-10 space-y-6 border border-gray-300 rounded-3xl bg-gray/20 backdrop-blur-lg w-96"
+        className="p-10 space-y-6 border border-gray-300 rounded-3xl bg-gray/20 backdrop-blur-lg w-92"
         onSubmit={form.handleSubmit(onSubmit)}
       >
         {/* Form Label */}
