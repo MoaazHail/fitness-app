@@ -14,7 +14,7 @@ export default function AuthLayout() {
       {/* Sidebar */}
       <aside className="flex-col items-center justify-center hidden text-4xl text-white border-r md:flex border-orange-primary/70">
         {/* Logo  */}
-        <img src="/assets/images/logo.svg" className="size-40 object-fit" />
+        <img src="/assets/images/logo.svg" className="size-48 object-fit" />
 
         {/* User */}
         <img src="/assets/images/user.svg" className="object-fit" />
