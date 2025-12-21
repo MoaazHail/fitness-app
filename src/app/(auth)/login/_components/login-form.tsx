@@ -43,7 +43,7 @@ export default function LoginForm() {
         toast.success("Login Successfully", { duration: 800 });
 
         setTimeout(() => {
-          // location.href = "/";
+          location.href = "/";
         }, 1000);
       },
     });

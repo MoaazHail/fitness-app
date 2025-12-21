@@ -1,22 +1,6 @@
 import { getItem, removeItem, setItem } from "@/lib/utils/secure-storage";
 import { createContext, useState } from "react";
 
-// User type
-export type UserType = {
-  firstName: string;
-  lastName: string;
-  email: string;
-  gender: string;
-  age: number;
-  weight: number;
-  height: number;
-  activityLevel: string;
-  goal: string;
-  photo: string;
-  _id: string;
-  createdAt: string;
-};
-
 // Context type
 export type AuthenticationProviderType = {
   isAuth: boolean;

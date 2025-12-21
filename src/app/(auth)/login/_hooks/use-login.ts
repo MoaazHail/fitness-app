@@ -1,4 +1,5 @@
 import type { LoginValues } from "@/lib/schemas/login.schema";
+import type { LoginApiResponse } from "@/lib/types/auth";
 import fetcher from "@/lib/utils/axios";
 import { useMutation } from "@tanstack/react-query";
 
@@ -11,9 +12,11 @@ export default function useLogin() {
     mutationKey: ["auth", "login"],
 
     mutationFn: async (payload: LoginValues) => {
-      const { data } = await fetcher.post("/auth/signin", payload);
+      const { data } = await fetcher.post<LoginApiResponse>(
+        "/auth/signin",
+        payload
+      );
 
-      console.log(data);
       if ("error" in data) {
         throw new Error(data.error);
       }
