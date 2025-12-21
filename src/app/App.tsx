@@ -1,7 +1,10 @@
+import AppRouter from "@/router";
+import { BrowserRouter } from "react-router-dom";
+
 export default function App() {
   return (
-    <div className="flex min-h-svh flex-col items-center justify-center">
-      App
-    </div>
+    <BrowserRouter>
+      <AppRouter />
+    </BrowserRouter>
   );
 }
