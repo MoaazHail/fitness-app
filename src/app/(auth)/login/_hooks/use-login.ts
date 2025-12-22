@@ -1,4 +1,4 @@
-import type { LoginValues } from "@/lib/schemas/login.schema";
+import type { LoginValues } from "@/lib/schemas/auth.schema";
 import type { LoginApiResponse } from "@/lib/types/auth";
 import fetcher from "@/lib/utils/axios";
 import { useMutation } from "@tanstack/react-query";

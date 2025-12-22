@@ -9,6 +9,9 @@ import MainLayout from "@/app/main-layout";
 
 // Pages (Lazy Loaded)
 const LoginPage = lazy(() => import("@/app/(auth)/login/page"));
+const ForgotPasswordPage = lazy(
+  () => import("@/app/(auth)/forgot-password/page")
+);
 
 const HomePage = lazy(() => import("@/app/(home)/page"));
 
@@ -25,7 +28,7 @@ export default function AppRouter() {
         >
           <Route path="/login" element={<LoginPage />} />
           <Route path="/register" element={<h2>register</h2>} />
-          <Route path="/forget-password" element={<h2>forgetPage</h2>} />
+          <Route path="/forget-password" element={<ForgotPasswordPage />} />
         </Route>
 
         {/* Main Layout */}

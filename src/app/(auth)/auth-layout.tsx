@@ -7,8 +7,8 @@ export default function AuthLayout() {
       style={{
         background:
           "linear-gradient(135deg, rgba(20,20,20,0.85), rgba(10,10,10,0.9))",
-        backdropFilter: "blur(100)",
-        WebkitBackdropFilter: "blur(100)",
+        backdropFilter: "blur(80px)",
+        WebkitBackdropFilter: "blur(80px)",
       }}
     >
       {/* Sidebar */}

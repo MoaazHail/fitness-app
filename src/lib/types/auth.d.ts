@@ -8,7 +8,17 @@ type LoginResponse = {
   token: string;
 };
 
+type SendOtpResponse = {
+  info: string;
+};
+
 type LoginApiResponse = ApiResponse<LoginResponse>;
+type SendOtpApiResponse = ApiResponse<SendOtpResponse>;
+type VerifyOtpResponse =
+  | ErrorResponse
+  | {
+      status: string;
+    };
 
 type ForgotPasswordStep =
   (typeof FORGOT_PASSWORD_STEPS)[keyof typeof FORGOT_PASSWORD_STEPS];
@@ -16,4 +26,10 @@ type ForgotPasswordStep =
 type RegisterFormStep =
   (typeof REGISTER_FORM_STEPS)[keyof typeof REGISTER_FORM_STEPS];
 
-export { ForgotPasswordStep, LoginApiResponse, RegisterFormStep };
+export {
+  ForgotPasswordStep,
+  LoginApiResponse,
+  RegisterFormStep,
+  SendOtpApiResponse,
+  VerifyOtpResponse,
+};

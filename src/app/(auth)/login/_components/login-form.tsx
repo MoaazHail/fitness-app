@@ -10,7 +10,7 @@ import {
 
 import { Input } from "@/components/ui/input";
 import useAuth from "@/hooks/shared/use-auth";
-import { loginSchema, type LoginValues } from "@/lib/schemas/login.schema";
+import { loginSchema, type LoginValues } from "@/lib/schemas/auth.schema";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Lock, Mail } from "lucide-react";
 import { useForm, type SubmitHandler } from "react-hook-form";

@@ -25,7 +25,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
     return (
       <div className="relative">
         {Icon && (
-          <div className="absolute inset-y-0 left-3 flex items-center text-gray">
+          <div className="absolute inset-y-0 flex items-center left-3 text-gray">
             <Icon size={18} />
           </div>
         )}
@@ -42,7 +42,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
         />
         {type === "password" && (
           <button
-            className=" absolute inset-y-0 right-3 flex items-center text-gray hover:text-white"
+            className="absolute inset-y-0 flex items-center  right-3 text-gray hover:text-white"
             onClick={handlePassword}
           >
             {showPassword ? <EyeOff size={18} /> : <Eye size={18} />}
