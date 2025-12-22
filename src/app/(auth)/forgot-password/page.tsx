@@ -16,7 +16,7 @@ export default function ForgotPasswordPage() {
   // state
   const [email, setEmail] = useState<string | null>(null);
   const [step, setStep] = useState<ForgotPasswordStep>(
-    FORGOT_PASSWORD_STEPS.CREATE_PASSWORD
+    FORGOT_PASSWORD_STEPS.OTP
   );
 
   // Steps configuration

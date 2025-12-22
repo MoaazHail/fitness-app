@@ -55,12 +55,8 @@ export default function SendEmailStep({
         // Show  user success message
         toast.success(response.info || "otp sended Successfully", {
           duration: 800,
+          onAutoClose: () => setStep(FORGOT_PASSWORD_STEPS.OTP),
         });
-
-        // Navigate To Next step
-        setTimeout(() => {
-          setStep(FORGOT_PASSWORD_STEPS.OTP);
-        }, 1000);
       },
     });
   };

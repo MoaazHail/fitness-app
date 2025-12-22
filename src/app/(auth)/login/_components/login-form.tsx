@@ -40,11 +40,10 @@ export default function LoginForm() {
     login(data, {
       onSuccess: (response) => {
         saveUserData(response.token, response.user);
-        toast.success("Login Successfully", { duration: 800 });
-
-        setTimeout(() => {
-          location.href = "/";
-        }, 1000);
+        toast.success("Login Successfully", {
+          duration: 800,
+          onAutoClose: () => (location.href = "/"),
+        });
       },
     });
   };

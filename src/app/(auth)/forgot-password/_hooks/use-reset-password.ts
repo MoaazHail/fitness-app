@@ -1,5 +1,6 @@
-import { type OtpSchemaValues } from "@/lib/schemas/auth.schema";
-import type { VerifyOtpResponse } from "@/lib/types/auth";
+import { type createNewPasswordValues } from "@/lib/schemas/auth.schema";
+import type { CarateNewPasswordApiResponse } from "@/lib/types/auth";
+
 import fetcher from "@/lib/utils/axios";
 import { useMutation } from "@tanstack/react-query";
 
@@ -11,8 +12,8 @@ export default function useResetPassword() {
   } = useMutation({
     mutationKey: ["auth", "reset-password"],
 
-    mutationFn: async (payload: OtpSchemaValues) => {
-      const { data } = await fetcher.post<VerifyOtpResponse>(
+    mutationFn: async (payload: createNewPasswordValues) => {
+      const { data } = await fetcher.put<CarateNewPasswordApiResponse>(
         "/auth/resetPassword",
         payload
       );

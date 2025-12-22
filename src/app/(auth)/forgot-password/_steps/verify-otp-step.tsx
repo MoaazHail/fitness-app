@@ -41,12 +41,8 @@ export default function VerifyOtpStep({ setStep }: VerifyOtpStepPropsType) {
         // Show  user success message
         toast.success("otp Verify Successfully", {
           duration: 800,
+          onAutoClose: () => setStep(FORGOT_PASSWORD_STEPS.CREATE_PASSWORD),
         });
-
-        // Navigate To Next step
-        setTimeout(() => {
-          setStep(FORGOT_PASSWORD_STEPS.CREATE_PASSWORD);
-        }, 1000);
       },
     });
   };
@@ -69,7 +65,7 @@ export default function VerifyOtpStep({ setStep }: VerifyOtpStepPropsType) {
           Enter the OTP you have received
         </p>
 
-        {/* Email Input */}
+        {/* Otp Input */}
         <FormField
           control={form.control}
           name="resetCode"
@@ -113,6 +109,8 @@ export default function VerifyOtpStep({ setStep }: VerifyOtpStepPropsType) {
         >
           Confirm
         </Button>
+
+        {/* Resend code */}
       </form>
     </Form>
   );

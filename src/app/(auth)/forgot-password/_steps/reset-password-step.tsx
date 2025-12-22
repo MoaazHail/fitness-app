@@ -11,11 +11,13 @@ import {
 import { Input } from "@/components/ui/input";
 import {
   CreateNewPasswordSchema,
-  type createNewPasswordSchemaValues,
+  type createNewPasswordValues,
 } from "@/lib/schemas/auth.schema";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Lock } from "lucide-react";
 import { useForm, type SubmitHandler } from "react-hook-form";
+import { useNavigate } from "react-router-dom";
+import { toast } from "sonner";
 
 type ResetPasswordStepPropsType = {
   email: string;
@@ -23,6 +25,9 @@ type ResetPasswordStepPropsType = {
 export default function ResetPasswordStep({
   email,
 }: ResetPasswordStepPropsType) {
+  // Navigation
+  const navigateTo = useNavigate();
+
   // Mutation
   const { resetPassword, error, isPending } = useResetPassword();
 
@@ -37,8 +42,15 @@ export default function ResetPasswordStep({
   });
 
   // Functions
-  const onSubmit: SubmitHandler<createNewPasswordSchemaValues> = () => {
-    resetPassword({ resetCode: "" });
+  const onSubmit: SubmitHandler<createNewPasswordValues> = (payload) => {
+    resetPassword(payload, {
+      onSuccess: () => {
+        toast.success("Password Updated Successfully", {
+          duration: 800,
+          onAutoClose: () => navigateTo("/login"),
+        });
+      },
+    });
   };
 
   // Variables

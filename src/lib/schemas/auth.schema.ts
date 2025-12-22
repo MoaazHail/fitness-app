@@ -47,8 +47,6 @@ const CreateNewPasswordSchema = loginSchema
 export type LoginValues = z.infer<typeof loginSchema>;
 export type SendEmailStepValues = z.infer<typeof sendEmailStepSchema>;
 export type OtpSchemaValues = z.infer<typeof OtpSchema>;
-export type createNewPasswordSchemaValues = z.infer<
-  typeof CreateNewPasswordSchema
->;
+export type createNewPasswordValues = z.infer<typeof CreateNewPasswordSchema>;
 
 export { CreateNewPasswordSchema, loginSchema, OtpSchema, sendEmailStepSchema };
