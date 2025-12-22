@@ -1,3 +1,8 @@
+import type {
+  FORGOT_PASSWORD_STEPS,
+  REGISTER_FORM_STEPS,
+} from "@/lib/constants/auth.constant";
+
 type LoginResponse = {
   user: UserType;
   token: string;
@@ -5,4 +10,10 @@ type LoginResponse = {
 
 type LoginApiResponse = ApiResponse<LoginResponse>;
 
-export { LoginApiResponse };
+type ForgotPasswordStep =
+  (typeof FORGOT_PASSWORD_STEPS)[keyof typeof FORGOT_PASSWORD_STEPS];
+
+type RegisterFormStep =
+  (typeof REGISTER_FORM_STEPS)[keyof typeof REGISTER_FORM_STEPS];
+
+export { ForgotPasswordStep, LoginApiResponse, RegisterFormStep };
