@@ -58,6 +58,11 @@
   }
 }
 
+/* Active Links */
+.active{
+  color: #FF4100;
+}
+
 @font-face {
   font-family: 'Baloo';
   src: url('/public/assets/fonts/BalooThambi2-VariableFont_wght.ttf');
