@@ -16,7 +16,7 @@ export default function ForgotPasswordPage() {
   // state
   const [email, setEmail] = useState<string | null>(null);
   const [step, setStep] = useState<ForgotPasswordStep>(
-    FORGOT_PASSWORD_STEPS.EMAIL
+    FORGOT_PASSWORD_STEPS.CREATE_PASSWORD
   );
 
   // Steps configuration
@@ -49,8 +49,8 @@ export default function ForgotPasswordPage() {
     // Create new password step
     [FORGOT_PASSWORD_STEPS.CREATE_PASSWORD]: {
       heading: (
-        <AuthenticationHeading.title>
-          Create New Password
+        <AuthenticationHeading.title className="text-4xl font-extrabold font-baloo">
+          create new password
         </AuthenticationHeading.title>
       ),
       element: <ResetPasswordStep email={email as string} />,

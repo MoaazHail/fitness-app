@@ -102,7 +102,7 @@ export default function VerifyOtpStep({ setStep }: VerifyOtpStepPropsType) {
         />
 
         {/* Api feedback */}
-        <ApiFeedback className="max-w-72">{error?.message}</ApiFeedback>
+        <ApiFeedback className="mx-auto max-w-72">{error?.message}</ApiFeedback>
 
         {/* Login button action */}
         <Button

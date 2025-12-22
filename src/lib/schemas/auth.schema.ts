@@ -30,9 +30,25 @@ const OtpSchema = z.object({
     .max(6, "The verification code must be 6 digits long."),
 });
 
+const CreateNewPasswordSchema = loginSchema
+  .pick({
+    email: true,
+  })
+  .extend({
+    newPassword: z.string().min(8, "Password must be at least 8 characters"),
+    rePassword: z.string().min(8, "Password must be at least 8 characters"),
+  })
+  .refine((data) => data.newPassword === data.rePassword, {
+    path: ["rePassword"],
+    message: "Passwords do not match",
+  });
+
 // Types
 export type LoginValues = z.infer<typeof loginSchema>;
 export type SendEmailStepValues = z.infer<typeof sendEmailStepSchema>;
 export type OtpSchemaValues = z.infer<typeof OtpSchema>;
+export type createNewPasswordSchemaValues = z.infer<
+  typeof CreateNewPasswordSchema
+>;
 
-export { loginSchema, OtpSchema, sendEmailStepSchema };
+export { CreateNewPasswordSchema, loginSchema, OtpSchema, sendEmailStepSchema };
