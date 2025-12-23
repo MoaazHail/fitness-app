@@ -14,4 +14,9 @@ const REGISTER_FORM_STEPS = {
   LEVEL: "level",
 } as const;
 
-export { FORGOT_PASSWORD_STEPS, REGISTER_FORM_STEPS };
+const GANDER_TYPES = {
+  MAIL: "male",
+  FEMALE: "female",
+} as const;
+
+export { FORGOT_PASSWORD_STEPS, GANDER_TYPES, REGISTER_FORM_STEPS };
