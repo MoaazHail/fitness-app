@@ -16,7 +16,7 @@ export default function ForgotPasswordPage() {
   // state
   const [email, setEmail] = useState<string | null>(null);
   const [step, setStep] = useState<ForgotPasswordStep>(
-    FORGOT_PASSWORD_STEPS.OTP
+    FORGOT_PASSWORD_STEPS.EMAIL
   );
 
   // Steps configuration
@@ -43,7 +43,7 @@ export default function ForgotPasswordPage() {
           OTP CODE
         </AuthenticationHeading.title>
       ),
-      element: <VerifyOtpStep setStep={setStep} />,
+      element: <VerifyOtpStep setStep={setStep} email={email as string} />,
     },
 
     // Create new password step

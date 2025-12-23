@@ -14,15 +14,20 @@ import { OtpSchema, type OtpSchemaValues } from "@/lib/schemas/auth.schema";
 import type { ForgotPasswordStep } from "@/lib/types/auth";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { REGEXP_ONLY_DIGITS } from "input-otp";
-import type { Dispatch, SetStateAction } from "react";
+import { type Dispatch, type SetStateAction } from "react";
 import { useForm, type SubmitHandler } from "react-hook-form";
 import { toast } from "sonner";
+import ResendOtp from "./../_components/resend-otp";
 
 type VerifyOtpStepPropsType = {
+  email: string;
   setStep: Dispatch<SetStateAction<ForgotPasswordStep>>;
 };
 
-export default function VerifyOtpStep({ setStep }: VerifyOtpStepPropsType) {
+export default function VerifyOtpStep({
+  setStep,
+  email,
+}: VerifyOtpStepPropsType) {
   // Mutation
   const { verifyOtp, isPending, error } = useVerifyOtp();
 
@@ -41,7 +46,13 @@ export default function VerifyOtpStep({ setStep }: VerifyOtpStepPropsType) {
         // Show  user success message
         toast.success("otp Verify Successfully", {
           duration: 800,
-          onAutoClose: () => setStep(FORGOT_PASSWORD_STEPS.CREATE_PASSWORD),
+          onAutoClose: () => {
+            // Clear Timer
+            sessionStorage.removeItem("otp_last_sent_at");
+
+            // Go to Next Step
+            setStep(FORGOT_PASSWORD_STEPS.CREATE_PASSWORD);
+          },
         });
       },
     });
@@ -111,6 +122,7 @@ export default function VerifyOtpStep({ setStep }: VerifyOtpStepPropsType) {
         </Button>
 
         {/* Resend code */}
+        <ResendOtp email={email} />
       </form>
     </Form>
   );

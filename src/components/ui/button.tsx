@@ -11,7 +11,7 @@ const buttonVariants = cva(
     variants: {
       variant: {
         default: "bg-orange-primary shadow-sm hover:bg-orange-primary/90",
-        link: "text-orange-primary underline",
+        link: "text-orange-primary underline disabled:bg-transparent disabled:text-orange-primary/50",
         outline:
           "border border-orange-primary bg-transparent text-orange-primary shadow-sm",
       },
