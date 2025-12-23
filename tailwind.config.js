@@ -44,7 +44,7 @@ export default {
         },
         "orange-primary": "#FF4100",
         gray: "#D3D3D3",
-        dark: "#24242499",
+        dark: "#242424",
       },
       fontFamily: {
         baloo: "Baloo",
