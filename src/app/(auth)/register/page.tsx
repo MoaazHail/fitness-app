@@ -1,5 +1,8 @@
 import { Form } from "@/components/ui/form";
-import { REGISTER_FORM_STEPS } from "@/lib/constants/auth.constant";
+import {
+  GANDER_TYPES,
+  REGISTER_FORM_STEPS,
+} from "@/lib/constants/auth.constant";
 import { registerSchema, type registerValues } from "@/lib/schemas/auth.schema";
 import type { RegisterFormStep } from "@/lib/types/auth";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -8,6 +11,8 @@ import { useForm } from "react-hook-form";
 import AgeStep from "./_components/_layout/age-step";
 import BaseDataStep from "./_components/_layout/base-data-step";
 import GenderStep from "./_components/_layout/gender-step";
+import GoalStep from "./_components/_layout/goal-step";
+import LevelStep from "./_components/_layout/level-step";
 import FormStepIndentor from "./_components/form-step-indictor";
 
 type RegisterFormStepConfig = {
@@ -17,7 +22,7 @@ type RegisterFormStepConfig = {
 
 export default function RegisterPage() {
   // State
-  const [step, setStep] = useState<RegisterFormStep>(REGISTER_FORM_STEPS.AGE);
+  const [step, setStep] = useState<RegisterFormStep>(REGISTER_FORM_STEPS.GOAL);
 
   // Form and validation
   const form = useForm<registerValues>({
@@ -27,7 +32,7 @@ export default function RegisterPage() {
       email: "",
       password: "",
       rePassword: "",
-      gender: "male",
+      gender: GANDER_TYPES.MAIL,
       height: "",
       weight: 0,
       age: 0,
@@ -71,6 +76,26 @@ export default function RegisterPage() {
         <AgeStep
           form={form}
           handelGoToNextStep={() => setStep(REGISTER_FORM_STEPS.AGE)}
+        />
+      ),
+    },
+
+    [REGISTER_FORM_STEPS.GOAL]: {
+      stepNumber: 5,
+      element: (
+        <GoalStep
+          form={form}
+          handelGoToNextStep={() => setStep(REGISTER_FORM_STEPS.LEVEL)}
+        />
+      ),
+    },
+
+    [REGISTER_FORM_STEPS.LEVEL]: {
+      stepNumber: 6,
+      element: (
+        <LevelStep
+          form={form}
+          handelGoToNextStep={() => setStep(REGISTER_FORM_STEPS.LEVEL)}
         />
       ),
     },

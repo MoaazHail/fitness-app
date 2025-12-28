@@ -16,7 +16,7 @@ const buttonVariants = cva(
           "border border-orange-primary bg-transparent text-orange-primary shadow-sm",
       },
       size: {
-        default: "h-9 px-6 py-2",
+        default: "min-h-9 px-6 py-3",
         sm: "h-8 rounded-md px-3 text-xs",
         lg: "h-10 rounded-md px-8",
       },
