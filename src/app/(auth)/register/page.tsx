@@ -1,13 +1,19 @@
+import ApiFeedback from "@/app/(auth)/_components/api-feedback";
+import useRegister from "@/app/(auth)/register/_hooks/use-register";
 import { Form } from "@/components/ui/form";
+
 import {
   GANDER_TYPES,
   REGISTER_FORM_STEPS,
 } from "@/lib/constants/auth.constant";
+
 import { registerSchema, type registerValues } from "@/lib/schemas/auth.schema";
 import type { RegisterFormStep } from "@/lib/types/auth";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useState, type ReactNode } from "react";
-import { useForm } from "react-hook-form";
+import { useForm, type SubmitHandler } from "react-hook-form";
+import { useNavigate } from "react-router-dom";
+import { toast } from "sonner";
 import AgeStep from "./_components/_layout/age-step";
 import BaseDataStep from "./_components/_layout/base-data-step";
 import GenderStep from "./_components/_layout/gender-step";
@@ -21,8 +27,14 @@ type RegisterFormStepConfig = {
 };
 
 export default function RegisterPage() {
+  // Navigation
+  const navigateTo = useNavigate();
+
   // State
   const [step, setStep] = useState<RegisterFormStep>(REGISTER_FORM_STEPS.GOAL);
+
+  //  Mutation
+  const { register, isPending, error } = useRegister();
 
   // Form and validation
   const form = useForm<registerValues>({
@@ -44,7 +56,17 @@ export default function RegisterPage() {
   });
 
   // Functions
-  const onSubmit = () => {};
+  const onSubmit: SubmitHandler<registerValues> = (data) => {
+    console.log(data);
+    register(data, {
+      onSuccess: () => {
+        toast.success("create account Successfully", {
+          duration: 800,
+          onAutoClose: () => navigateTo("/login"),
+        });
+      },
+    });
+  };
 
   // Variables
   const REGISTER_FORM_STEPS_COMPONENT: Partial<
@@ -93,10 +115,7 @@ export default function RegisterPage() {
     [REGISTER_FORM_STEPS.LEVEL]: {
       stepNumber: 6,
       element: (
-        <LevelStep
-          form={form}
-          handelGoToNextStep={() => setStep(REGISTER_FORM_STEPS.LEVEL)}
-        />
+        <LevelStep form={form} isPending={isPending} onSubmit={onSubmit} />
       ),
     },
   };
@@ -111,6 +130,9 @@ export default function RegisterPage() {
 
         {/* Form steps */}
         {currentStep?.element}
+
+        {/* Api Feedback */}
+        <ApiFeedback>{error?.message}</ApiFeedback>
       </form>
     </Form>
   );

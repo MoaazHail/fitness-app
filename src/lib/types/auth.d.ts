@@ -17,6 +17,11 @@ type CarateNewPasswordResponse = {
   token: string;
 };
 
+type RegisterResponse = {
+  user: UserType;
+  token: string;
+};
+
 // api responses
 type LoginApiResponse = ApiResponse<LoginResponse>;
 
@@ -30,6 +35,8 @@ type VerifyOtpResponse =
 
 type CarateNewPasswordApiResponse = ApiResponse<CarateNewPasswordResponse>;
 
+type RegisterApiResponse = ApiResponse<RegisterResponse>;
+
 // steps
 type ForgotPasswordStep =
   (typeof FORGOT_PASSWORD_STEPS)[keyof typeof FORGOT_PASSWORD_STEPS];
@@ -42,6 +49,7 @@ export {
   CarateNewPasswordApiResponse,
   ForgotPasswordStep,
   LoginApiResponse,
+  RegisterApiResponse,
   RegisterFormStep,
   SendOtpApiResponse,
   VerifyOtpResponse,
