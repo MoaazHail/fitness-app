@@ -39,7 +39,7 @@ export default function AppRouter() {
 
         {/* About Page */}
         <Route element={<MainLayout />}>
-          <Route path="/about" element={<About />} />
+          <Route path="/about" element={<About IsPage={true} />} />
         </Route>
 
         {/* Not Found */}
