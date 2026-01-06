@@ -6,6 +6,7 @@ import { Route, Routes } from "react-router-dom";
 // Layouts
 import AuthLayout from "@/app/(auth)/auth-layout";
 import MainLayout from "@/app/main-layout";
+import About from "@/app/about/page";
 
 // Pages (Lazy Loaded)
 const LoginPage = lazy(() => import("@/app/(auth)/login/page"));
@@ -34,6 +35,11 @@ export default function AppRouter() {
         {/* Main Layout */}
         <Route element={<MainLayout />}>
           <Route path="/" element={<HomePage />} />
+        </Route>
+
+        {/* About Page */}
+        <Route element={<MainLayout />}>
+          <Route path="/about" element={<About />} />
         </Route>
 
         {/* Not Found */}
