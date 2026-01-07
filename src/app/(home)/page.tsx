@@ -9,6 +9,7 @@ import { ButtonIcon } from "@/components/ui/button";
 import { cn } from "@/lib/utils/tailwind-merge";
 import { GYM_INFO } from "./_constants/info.constant";
 import { AboutSection } from "@/components/features";
+import Workout from "./_components/workout";
 
 export default function Home() {
   return (
@@ -121,6 +122,7 @@ export default function Home() {
       <AboutSection />
 
       {/* Workout Section */}
+      <Workout />
 
       {/* Why Us */}
 
