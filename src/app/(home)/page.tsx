@@ -8,7 +8,7 @@ import {
 import { ButtonIcon } from "@/components/ui/button";
 import { cn } from "@/lib/utils/tailwind-merge";
 import { GYM_INFO } from "./_constants/info.constant";
-import About from "../about/page";
+import { AboutSection } from "@/components/features";
 
 export default function Home() {
   return (
@@ -118,7 +118,7 @@ export default function Home() {
       <MainCarousel />
 
       {/* About Section */}
-      <About IsPage={false} />
+      <AboutSection />
 
       {/* Workout Section */}
 
