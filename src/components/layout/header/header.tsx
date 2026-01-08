@@ -1,15 +1,17 @@
-import logo from "../../../../public/assets/images/logo.png";
 import { Link } from "react-router-dom";
 import { User } from "lucide-react";
 import Navbar from "./components/navbar";
+import { Image } from "@/components/shared";
 
 export default function Header() {
   return (
-    <header className=" sticky flex justify-around items-center bg-transparent ">
+    <header className=" fixed w-full flex justify-around items-center bg-transparent z-50 mt-5 md:mt-10 dark:text-white ">
       {/* Logo */}
-      <div className=" flex justify-center items-center h-14 w-20 order-1">
-        <img src={logo} alt="logo" className=" object-cover " />
-      </div>
+      <Image
+        src="/assets/images/logo.png"
+        alt="Logo"
+        className=" h-14 w-20 order-1"
+      />
 
       {/* Navbar */}
       <Navbar />
