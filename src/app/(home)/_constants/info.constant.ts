@@ -32,4 +32,22 @@ const WORKOUT_INFO = [
   },
 ];
 
-export { GYM_INFO, WORKOUT_INFO };
+const WHY_US_INFO = [
+  {
+    title: "personalized fitness plans",
+    description:
+      "We tailor every workout to fit your unique goals and fitness level ensuring that you make the most progress.",
+  },
+  {
+    title: "results-driven focus",
+    description:
+      "Everything we do is designed to help you achieve measurable results, whether you're aiming for weight loss.",
+  },
+  {
+    title: "state-of-the-art equipment",
+    description:
+      "We provide the latest in gym equipment, from cardio machines to free weights, designed to support every type.",
+  },
+];
+
+export { GYM_INFO, WORKOUT_INFO, WHY_US_INFO };

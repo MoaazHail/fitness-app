@@ -40,7 +40,7 @@ export default function Workout() {
       {/* Workout */}
       <div className=" flex flex-wrap justify-center items-center gap-8 mb-20">
         {WORKOUT_INFO.map((item) => (
-          <Card item={item} />
+          <Card item={item} key={item.id} />
         ))}
       </div>
     </Section>
