@@ -75,14 +75,19 @@ const ButtonIcon = React.forwardRef<HTMLButtonElement, ButtonProps>(
       <Comp
         className={cn(
           buttonVariants({ variant, size, className }),
-          "relative",
-          variant === "link" && "no-underline"
+          "relative capitalize",
+          variant === "link" && "no-underline p-0 font-bold text-lg"
         )}
         ref={ref}
         {...props}
       >
         {children}
-        <div className="absolute flex items-center justify-center p-1 text-white border-2 border-white rounded-full -right-3 bg-orange-primary">
+        <div
+          className={cn(
+            "absolute flex items-center justify-center p-1 text-white border-2 border-white rounded-full  bg-orange-primary",
+            variant === "link" ? "-right-8" : "-right-3"
+          )}
+        >
           <ArrowUpRight />
         </div>
       </Comp>
