@@ -61,6 +61,7 @@ export default function RegisterPage() {
 
   // Functions
   const onSubmit: SubmitHandler<registerValues> = (data) => {
+    console.log(data);
     register(data, {
       onSuccess: () => {
         toast.success("create account Successfully", {
@@ -147,7 +148,7 @@ export default function RegisterPage() {
 
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
+      <form className="space-y-8">
         {/* Form Steeper */}
         <FormStepIndentor currentStep={currentStep?.stepNumber as number} />
 

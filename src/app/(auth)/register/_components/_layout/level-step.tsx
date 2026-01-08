@@ -9,6 +9,7 @@ import { Controller } from "react-hook-form";
 export default function LevelStep({
   form,
   isPending,
+  onSubmit,
 }: // onSubmit,
 {
   form: UseFormReturn<registerValues>;
@@ -67,6 +68,7 @@ export default function LevelStep({
         className="w-full py-4 mt-6"
         disabled={isDisabled || isPending}
         isPending={isPending}
+        onClick={form.handleSubmit(onSubmit)}
       >
         Next
       </Button>
