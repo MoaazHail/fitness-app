@@ -11,6 +11,7 @@ import { GYM_INFO } from "./_constants/info.constant";
 import { AboutSection } from "@/components/features";
 import Workout from "./_components/workout";
 import WhyUs from "./_components/why-us";
+import Meals from "./_components/meals";
 
 export default function Home() {
   return (
@@ -129,6 +130,7 @@ export default function Home() {
       <WhyUs />
 
       {/* Healthy */}
+      <Meals />
 
       {/* Main Carousel */}
       <MainCarousel />
