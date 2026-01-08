@@ -18,7 +18,9 @@ import AgeStep from "./_components/_layout/age-step";
 import BaseDataStep from "./_components/_layout/base-data-step";
 import GenderStep from "./_components/_layout/gender-step";
 import GoalStep from "./_components/_layout/goal-step";
+import HeightStep from "./_components/_layout/hight-step";
 import LevelStep from "./_components/_layout/level-step";
+import WeightStep from "./_components/_layout/weight-step";
 import FormStepIndentor from "./_components/form-step-indictor";
 
 type RegisterFormStepConfig = {
@@ -31,7 +33,9 @@ export default function RegisterPage() {
   const navigateTo = useNavigate();
 
   // State
-  const [step, setStep] = useState<RegisterFormStep>(REGISTER_FORM_STEPS.GOAL);
+  const [step, setStep] = useState<RegisterFormStep>(
+    REGISTER_FORM_STEPS.BASE_DATA
+  );
 
   //  Mutation
   const { register, isPending, error } = useRegister();
@@ -57,7 +61,6 @@ export default function RegisterPage() {
 
   // Functions
   const onSubmit: SubmitHandler<registerValues> = (data) => {
-    console.log(data);
     register(data, {
       onSuccess: () => {
         toast.success("create account Successfully", {
@@ -97,7 +100,27 @@ export default function RegisterPage() {
       element: (
         <AgeStep
           form={form}
-          handelGoToNextStep={() => setStep(REGISTER_FORM_STEPS.AGE)}
+          handelGoToNextStep={() => setStep(REGISTER_FORM_STEPS.WEIGHT)}
+        />
+      ),
+    },
+
+    [REGISTER_FORM_STEPS.WEIGHT]: {
+      stepNumber: 3,
+      element: (
+        <WeightStep
+          form={form}
+          handelGoToNextStep={() => setStep(REGISTER_FORM_STEPS.HEIGHT)}
+        />
+      ),
+    },
+
+    [REGISTER_FORM_STEPS.HEIGHT]: {
+      stepNumber: 4,
+      element: (
+        <HeightStep
+          form={form}
+          handelGoToNextStep={() => setStep(REGISTER_FORM_STEPS.GOAL)}
         />
       ),
     },

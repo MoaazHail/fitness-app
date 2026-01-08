@@ -2,25 +2,25 @@ import AuthenticationHeading from "@/app/(auth)/_components/_layout/authenticati
 import { Button } from "@/components/ui/button";
 import type { registerValues } from "@/lib/schemas/auth.schema";
 import type { UseFormReturn } from "react-hook-form";
-import NumberWheel from "./../number-wheel-picker";
+import NumberWheel from "../number-wheel-picker";
 
-export default function AgeStep({
+export default function HeightStep({
   form,
   handelGoToNextStep,
 }: {
   form: UseFormReturn<registerValues>;
   handelGoToNextStep: () => void;
 }) {
-  const age = form.watch("age");
+  const height = form.watch("height");
 
-  const ages = Array.from({ length: 70 }, (_, i) => 18 + i);
+  const heights = Array.from({ length: 71 }, (_, i) => 140 + i);
 
   return (
     <div className="space-y-6 text-center">
       {/* Heading */}
       <AuthenticationHeading className="mb-12 space-y-4 font-baloo">
         <AuthenticationHeading.description className="text-5xl font-extrabold capitalize">
-          How Old Are you ?
+          What Is Your Height?
         </AuthenticationHeading.description>
 
         <AuthenticationHeading.title className="text-2xl">
@@ -28,12 +28,12 @@ export default function AgeStep({
         </AuthenticationHeading.title>
       </AuthenticationHeading>
 
-      {/* Age Picker */}
+      {/* Height Picker */}
       <NumberWheel
-        values={ages}
-        unit="Years"
+        values={heights}
+        unit="CM"
         onChange={(value: number) => {
-          form.setValue("age", value, {
+          form.setValue("height", value, {
             shouldValidate: true,
             shouldDirty: true,
           });
@@ -44,7 +44,7 @@ export default function AgeStep({
       <Button
         type="button"
         className="w-full"
-        disabled={!age}
+        disabled={!height}
         onClick={handelGoToNextStep}
       >
         Next
